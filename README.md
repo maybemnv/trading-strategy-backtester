@@ -48,18 +48,26 @@ Built with **FastAPI (backend)** and **React + Vite (frontend)**, this project d
 - **Recharts** (for data visualization)
 - Basic custom CSS styling
 
-## Setup
+## 🔁 How It Works
 
+1. User enters stock symbol, date range, and strategy in the frontend
+2. Frontend sends request to FastAPI backend
+3. Backend:
+   - Fetches historical OHLCV data
+   - Applies selected trading strategy
+   - Simulates trades using a backtesting engine
+   - Calculates performance metrics
+4. Results are returned to frontend
+5. Frontend displays metrics and equity curve graph
+
+---
+
+## ▶️ Running the Project Locally
+
+### Backend
 ```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
-
-## Run
-
-```bash
-uvicorn main:app --host 127.0.0.1 --port 8000
-```
-
-## Docs
-
-Interactive API docs available at `/docs` when server is running.
+uvicorn main:app --reload
