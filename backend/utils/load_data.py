@@ -1,5 +1,6 @@
 import yfinance as yf
 import pandas as pd
+
 def load_stock_data(stock_symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
     data = yf.download(stock_symbol, start=start_date, end=end_date)
 
