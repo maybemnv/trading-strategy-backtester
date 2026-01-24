@@ -11,8 +11,8 @@ def get_rsi_ema_signals(ohlcv_data: pd.DataFrame, rsi_period: int = 14, ema_peri
 
     df["Signal"] = 0
 
-    buy_signal = (df["RSI"] < 30) & (df['close'] > df["EMA"])
-    sell_signal = (df["RSI"] > 70) & (df['close'] < df["EMA"])
+    buy_signal = (df["RSI"] < 30) & (df['Close'] > df["EMA"])
+    sell_signal = (df["RSI"] > 70) & (df['Close'] < df["EMA"])
 
     df.loc[buy_signal, "Signal"] = 1
     df.loc[sell_signal, "Signal"] = -1

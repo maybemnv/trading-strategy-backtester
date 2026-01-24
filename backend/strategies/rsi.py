@@ -2,8 +2,9 @@ import pandas as pd
 
 def relative_strength_index(prices: pd.Series, period: int = 14) -> pd.Series:
     delta = prices.diff()
-    gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
-    loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
+    # Wilder's Smoothing (alpha = 1/n)
+    gain = delta.where(delta > 0, 0).ewm(alpha=1/period, adjust=False).mean()
+    loss = (-delta.where(delta < 0, 0)).ewm(alpha=1/period, adjust=False).mean()
 
     rs = gain / loss
     rsi = 100 - (100 / (1 + rs))
