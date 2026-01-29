@@ -1,4 +1,4 @@
-import "./InputForm.css";
+import "./inputForm.css";
 
 function InputForm({
   symbol,

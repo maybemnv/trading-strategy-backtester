@@ -2,6 +2,13 @@ import yfinance as yf
 import pandas as pd
 
 def load_stock_data(stock_symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
+    # Normalize dates to YYYY-MM-DD
+    try:
+        start_date = pd.to_datetime(start_date, dayfirst=True).strftime('%Y-%m-%d')
+        end_date = pd.to_datetime(end_date, dayfirst=True).strftime('%Y-%m-%d')
+    except Exception:
+        pass # Fallback to original string if parsing fails
+
     data = yf.download(stock_symbol, start=start_date, end=end_date)
 
     if data.empty:

@@ -9,7 +9,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import InputForm from "./components/InputForm";
+import InputForm from "./components/inputForm";
 import "./Dashboard.css";
 
 function Dashboard() {
